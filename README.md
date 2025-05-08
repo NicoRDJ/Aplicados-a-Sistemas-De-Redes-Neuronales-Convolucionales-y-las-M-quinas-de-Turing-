@@ -1,86 +1,84 @@
-#!/bin/bash
-# Configuración completa del repositorio Git para el proyecto CNN-Turing-Complexity
-
-# Paso 1: Crear el directorio del proyecto y navegar a él
-mkdir CNN-Turing-Complexity
-cd CNN-Turing-Complexity
-
-# Paso 2: Inicializar el repositorio git
-git init
-
-# Paso 3: Configurar la estructura básica
-mkdir -p src/{models,data,training,visualization} scripts notebooks tests
-
-# Paso 4: Crear archivo .gitignore
-cat > .gitignore << 'EOF'
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# PyTorch
-*.pt
-*.pth
-
-# Resultados de experimentos
-resultados/
-*.log
-
-# Entorno Virtual
-venv/
-env/
-
-# IDE
-.idea/
-.vscode/
-*.swp
-*.swo
-
-# Específicos del sistema operativo
-.DS_Store
-Thumbs.db
-EOF
-
-# Paso 5: Crear README.md
-cat > README.md << 'EOF'
 # CNN-Turing-Complexity
 
-Explorando la relación entre la profundidad de redes CNN y la complejidad computacional.
+<div align="center">
 
-## Descripción General
+![Jerarquía de Chomsky](https://miro.medium.com/max/1400/1*gBOXRSYG1SerR8BFGq11xQ.png)
 
-Este proyecto implementa experimentos que investigan cómo la profundidad de las redes neuronales convolucionales se relaciona con el reconocimiento de patrones de diferentes clases de complejidad computacional (basadas en la jerarquía de Chomsky).
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/downloads/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-1.10%2B-red)](https://pytorch.org/)
+[![DOI](https://img.shields.io/badge/DOI-10.xxxx%2Fxxxxx-blue)](https://doi.org/)
 
-Este código implementa la investigación descrita en "Fundamentos Matemáticos Aplicados a Sistemas De Redes Neuronales Convolucionales y las Máquinas de Turing" publicado en la revista EIA.
+**Explorando las fronteras teóricas entre Redes Neuronales Convolucionales y la Teoría de la Computabilidad**
 
-## Instalación
+</div>
+
+---
+
+## 📚 Acerca del Proyecto
+
+Este repositorio contiene la implementación del código para el artículo **"Fundamentos Matemáticos Aplicados a Sistemas De Redes Neuronales Convolucionales y las Máquinas de Turing"** publicado en la revista EIA. La investigación establece conexiones formales entre la profundidad de las CNNs y su capacidad expresiva en términos de la teoría de la computabilidad.
+
+### 🔍 Motivación
+
+Las redes neuronales profundas han revolucionado el aprendizaje automático, pero sus fundamentos teóricos en relación con modelos computacionales clásicos siguen siendo un área de investigación abierta. Este proyecto aborda la pregunta: **¿Existe una correspondencia entre la profundidad de las redes neuronales y la jerarquía de Chomsky de complejidad computacional?**
+
+### 🔬 Contribución Científica
+
+Este trabajo constituye un puente entre dos campos fundamentales:
+
+1. **Aprendizaje Profundo**: Arquitecturas CNN modernas con bloques residuales
+2. **Teoría de la Computación**: Clases de complejidad computacional según la jerarquía de Chomsky
+
+A través de experimentos rigurosos y análisis matemático, demostramos que:
+
+- Las CNNs más profundas pueden reconocer patrones de mayor complejidad computacional
+- El tiempo de aprendizaje escala con la complejidad teórica del problema
+- Existen límites fundamentales derivados de la teoría de la computabilidad que se manifiestan empíricamente
+
+## 🧠 Fundamento Teórico
+
+<div align="center">
+<img src="https://miro.medium.com/max/1400/1*i0o8mjFfCn-uD79-F1Cqkw.png" alt="Relación entre Profundidad y Complejidad" width="600"/>
+</div>
+
+La jerarquía de Chomsky clasifica los lenguajes formales en cuatro tipos, cada uno correspondiente a un modelo computacional con diferente poder expresivo:
+
+| Tipo | Clase de Lenguaje | Modelo Computacional | Ejemplo | Implementación |
+|------|-------------------|----------------------|---------|----------------|
+| 3 | Regular | Autómata Finito | a*b* | Patrones regulares |
+| 2 | Libre de Contexto | Autómata con Pila | a^n b^n | Patrones Sierpinski, paréntesis balanceados |
+| 1 | Sensible al Contexto | Autómata Limitado Lineal | a^n b^n c^n | Patrones sensibles al contexto |
+| 0 | Recursivamente Enumerable | Máquina de Turing | Problema de la parada | Patrones recursivos generales |
+
+Nuestra hipótesis central es que la profundidad arquitectónica de las CNNs se corresponde con esta jerarquía, permitiendo que redes más profundas capturen patrones de mayor complejidad computacional.
+
+## 🚀 Características
+
+- **Generadores de Patrones**: Implementación de generadores para diferentes clases de complejidad
+  - Patrones de Sierpinski (recursivos)
+  - Patrones de paréntesis balanceados (libres de contexto)
+  - Patrones sensibles al contexto (a^n b^n c^n)
+  - Patrones regulares y de autómatas linealmente acotados
+  
+- **Arquitectura CNN Avanzada**:
+  - Bloques residuales para mejor flujo de gradiente
+  - Profundidad configurable para experimentación sistemática
+  - Normalización por lotes y otras técnicas modernas
+  
+- **Marco Experimental Completo**:
+  - Entrenamiento con validación cruzada
+  - Análisis de rendimiento por clase de complejidad
+  - Visualización detallada de resultados
+
+## 🛠️ Instalación
 
 ```bash
 # Clonar el repositorio
 git clone https://github.com/tu-usuario/CNN-Turing-Complexity.git
 cd CNN-Turing-Complexity
 
-# Crear y activar un entorno virtual (opcional pero recomendado)
+# Crear entorno virtual (recomendado)
 python -m venv venv
 source venv/bin/activate  # En Windows: venv\Scripts\activate
 
@@ -88,471 +86,105 @@ source venv/bin/activate  # En Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-## Uso
+## 📊 Uso
+
+### Ejecutar Experimentos
 
 ```bash
-# Ejecutar experimento completo
-python scripts/experiment.py --modo completo --num_epocas 30
+# Experimento completo con múltiples profundidades
+python scripts/experiment.py --modo completo --num_epocas 30 --profundidades 3 5 7
 
-# Ejecutar experimento simplificado
+# Experimento simplificado (rápido)
 python scripts/experiment.py --modo simplificado --num_epocas 10
 ```
 
-## Estructura del Proyecto
+### Parámetros Disponibles
 
-- `src/`: Código fuente principal
-  - `models/`: Implementación de arquitecturas CNN
-  - `data/`: Generadores de patrones y gestión de datos
-  - `training/`: Funcionalidades de entrenamiento y evaluación
-  - `visualization/`: Herramientas de visualización
-- `scripts/`: Scripts ejecutables
-- `notebooks/`: Jupyter notebooks para análisis
-- `tests/`: Pruebas unitarias
+| Parámetro | Descripción | Valor Predeterminado |
+|-----------|-------------|----------------------|
+| `--modo` | Modo de experimento (`simplificado` o `completo`) | `simplificado` |
+| `--num_muestras` | Número de muestras en el conjunto de datos | 400 |
+| `--tamano_imagen` | Tamaño de las imágenes generadas | 64 |
+| `--tamano_lote` | Tamaño del lote para entrenamiento | 32 |
+| `--num_epocas` | Número de épocas de entrenamiento | 30 |
+| `--tasa_aprendizaje` | Tasa de aprendizaje | 0.001 |
+| `--profundidades` | Profundidades de CNN para experimentar | [3, 5, 7] |
+| `--semilla` | Semilla aleatoria para reproducibilidad | 42 |
+| `--directorio_salida` | Directorio para guardar resultados | `resultados` |
+| `--usar_aumento_datos` | Usar aumento de datos para entrenamiento | `False` |
+| `--paciencia` | Paciencia para detención temprana | 5 |
+| `--num_clases` | Número de clases a utilizar (3-5) | 4 |
 
-## Licencia
+### Visualización de Resultados
 
-Este proyecto está bajo la Licencia MIT.
-EOF
+```bash
+# Analizar resultados generados (crea visualizaciones en el directorio de resultados)
+python scripts/visualize_results.py --directorio_resultados resultados
+```
 
-# Paso 6: Crear requirements.txt
-cat > requirements.txt << 'EOF'
-numpy>=1.20.0
-matplotlib>=3.4.0
-torch>=1.10.0
-torchvision>=0.11.0
-scikit-learn>=0.24.0
-tqdm>=4.60.0
-seaborn>=0.11.0
-pandas>=1.3.0
-EOF
+## 📈 Resultados
 
-# Paso 7: Copiar el archivo principal
-# Asumiendo que el archivo corazon.py está en el directorio actual
-cp corazon.py scripts/experiment.py
+<div align="center">
+<img src="https://miro.medium.com/max/1400/1*gZ4m2DAz6dlGXKGRrE7o3g.jpeg" alt="Resultados Experimentales" width="700"/>
+</div>
 
-# Paso 8: Crear archivos de módulos Python básicos
-touch src/__init__.py
-touch src/models/__init__.py
-touch src/data/__init__.py
-touch src/training/__init__.py
-touch src/visualization/__init__.py
-touch tests/__init__.py
+Nuestros experimentos muestran una clara correlación entre la profundidad de la CNN y su capacidad para reconocer patrones de diferentes complejidades computacionales:
 
-# Paso 9: Extraer las clases principales a sus propios archivos
-# Por ejemplo, extraer la clase GeneradorPatrones a su propio archivo
+- **CNNs superficiales (profundidad 3)**: Excelente rendimiento en patrones regulares (Tipo 3), pero rendimiento limitado en patrones más complejos
+- **CNNs intermedias (profundidad 5)**: Buena capacidad para reconocer patrones libres de contexto (Tipo 2)
+- **CNNs profundas (profundidad 7+)**: Capacidad para reconocer incluso patrones sensibles al contexto (Tipo 1)
 
-cat > src/data/generador_patrones.py << 'EOF'
-import numpy as np
-import logging
+Los tiempos de entrenamiento también escalan con la complejidad teórica, validando nuestra hipótesis sobre la relación entre recursos computacionales y complejidad.
 
-logger = logging.getLogger(__name__)
+## 📝 Publicación Asociada
 
-class GeneradorPatrones:
-    """
-    Clase para generar diferentes tipos de patrones visuales que representan
-    distintos niveles de complejidad computacional según la jerarquía de Chomsky.
-    """
-    
-    @staticmethod
-    def crear_sierpinski(orden, tamano=64):
-        """
-        Genera un triángulo de Sierpinski de un orden específico.
-        
-        Args:
-            orden (int): La profundidad de recursión del triángulo de Sierpinski
-            tamano (int): El tamaño de la imagen de salida
-            
-        Returns:
-            np.ndarray: Un array 2D que representa el triángulo de Sierpinski
-        """
-        def recursion(x, y, tamano, orden):
-            if orden == 0:
-                imagen[y:y+tamano, x:x+tamano] = 1
-                return
-            
-            nuevo_tamano = tamano // 2
-            
-            recursion(x, y, nuevo_tamano, orden-1)  # Esquina superior izquierda
-            recursion(x + nuevo_tamano, y, nuevo_tamano, orden-1)  # Esquina superior derecha
-            recursion(x + nuevo_tamano//2, y + nuevo_tamano, nuevo_tamano, orden-1)  # Esquina inferior
-        
-        imagen = np.zeros((tamano, tamano), dtype=np.float32)
-        recursion(0, 0, tamano//2, orden)
-        return imagen
+Si utilizas este código en tu investigación, por favor cita nuestro artículo:
 
-    @staticmethod
-    def crear_patron_parentesis(profundidad, tamano=64):
-        """
-        Crea un patrón visual basado en paréntesis balanceados.
-        
-        Args:
-            profundidad (int): La profundidad de anidamiento de los paréntesis
-            tamano (int): El tamaño de la imagen de salida
-            
-        Returns:
-            np.ndarray: Un array 2D que representa el patrón de paréntesis
-        """
-        imagen = np.zeros((tamano, tamano), dtype=np.float32)
-        
-        # Genera una secuencia de paréntesis balanceados
-        def generar_parentesis_balanceados(n):
-            if n == 0:
-                return [""]
-            resultado = []
-            for i in range(n):
-                for izquierda in generar_parentesis_balanceados(i):
-                    for derecha in generar_parentesis_balanceados(n-i-1):
-                        resultado.append("(" + izquierda + ")" + derecha)
-            return resultado
-        
-        # Limitar la profundidad para evitar explosión combinatoria
-        profundidad = min(profundidad, 4)
-        
-        # Usar la primera secuencia generada
-        secuencia = generar_parentesis_balanceados(profundidad)[0]
-        
-        # Visualizar la secuencia como un patrón
-        x, y = tamano // 4, tamano // 2
-        grosor = 2
-        for caracter in secuencia:
-            if caracter == '(':
-                for i in range(grosor):
-                    for j in range(tamano // 8):
-                        if x + j < tamano and y - j >= 0:
-                            imagen[y - j, x + i] = 1
-                x += grosor
-            else:  # caracter == ')'
-                for i in range(grosor):
-                    for j in range(tamano // 8):
-                        if x + i < tamano and y + j < tamano:
-                            imagen[y + j, x + i] = 1
-                x += grosor
-                
-        return imagen
+```bibtex
+@article{rodriguez2023fundamentos,
+  title={Fundamentos Matemáticos Aplicados a Sistemas De Redes Neuronales Convolucionales y las Máquinas de Turing},
+  author={Rodríguez Díaz, Nicolás},
+  journal={Revista EIA},
+  year={2023}
+}
+```
 
-    @staticmethod
-    def crear_patron_sensible_contexto(n, tamano=64):
-        """
-        Crea un patrón visual basado en la gramática sensible al contexto a^n b^n c^n.
-        
-        Args:
-            n (int): El parámetro n en a^n b^n c^n
-            tamano (int): El tamaño de la imagen de salida
-            
-        Returns:
-            np.ndarray: Un array 2D que representa el patrón sensible al contexto
-        """
-        imagen = np.zeros((tamano, tamano), dtype=np.float32)
-        
-        # Limitar n para mantener el patrón visible
-        n = min(n, 10)
-        
-        # Crear patrón con:
-        # - n barras horizontales en la sección superior (a^n)
-        # - n barras verticales en la sección media (b^n)
-        # - n barras diagonales en la sección inferior (c^n)
-        
-        altura_seccion = tamano // 3
-        ancho_barra = max(2, tamano // (n * 2))
-        espaciado = max(4, tamano // (n + 1))
-        
-        # Sección a^n (barras horizontales)
-        for i in range(n):
-            y = (i + 1) * espaciado
-            if y + ancho_barra < altura_seccion:
-                imagen[y:y+ancho_barra, tamano//4:3*tamano//4] = 1
-        
-        # Sección b^n (barras verticales)
-        for i in range(n):
-            x = tamano // 4 + i * espaciado
-            if x + ancho_barra < 3 * tamano // 4:
-                imagen[altura_seccion:2*altura_seccion, x:x+ancho_barra] = 1
-        
-        # Sección c^n (barras diagonales)
-        for i in range(n):
-            for j in range(altura_seccion):
-                x = tamano // 4 + i * espaciado + j // 2
-                y = 2 * altura_seccion + j
-                if x + ancho_barra < 3 * tamano // 4 and y + ancho_barra < tamano:
-                    imagen[y:y+ancho_barra, x:x+ancho_barra] = 1
-        
-        return imagen
+## 🤝 Contribuciones
 
-    @staticmethod
-    def crear_patron_regular(tipo_patron, tamano=64):
-        """
-        Crea patrones regulares simples (no recursivos).
-        
-        Args:
-            tipo_patron (int): El tipo de patrón a generar (0-2)
-            tamano (int): El tamaño de la imagen de salida
-            
-        Returns:
-            np.ndarray: Un array 2D que representa el patrón regular
-        """
-        imagen = np.zeros((tamano, tamano), dtype=np.float32)
-        
-        if tipo_patron == 0:  # Cuadrícula
-            for i in range(0, tamano, tamano // 8):
-                imagen[i:i+2, :] = 1
-                imagen[:, i:i+2] = 1
-        
-        elif tipo_patron == 1:  # Círculos concéntricos
-            centro = tamano // 2
-            for r in range(0, tamano // 2, tamano // 16):
-                for i in range(tamano):
-                    for j in range(tamano):
-                        if abs((i-centro)**2 + (j-centro)**2 - r**2) < tamano:
-                            imagen[i, j] = 1
-        
-        elif tipo_patron == 2:  # Patrón diagonal
-            for i in range(tamano):
-                imagen[i, i] = 1
-                imagen[i, tamano-i-1] = 1
-        
-        return imagen
-    
-    @staticmethod
-    def crear_automata_limitado_lineal(regla, tamano=64):
-        """
-        Crea un patrón basado en el comportamiento de un autómata limitado lineal (LBA).
-        
-        Args:
-            regla (int): Determina la regla LBA a usar (0-2)
-            tamano (int): El tamaño de la imagen de salida
-            
-        Returns:
-            np.ndarray: Un array 2D que representa el patrón LBA
-        """
-        imagen = np.zeros((tamano, tamano), dtype=np.float32)
-        
-        # Inicializar la primera fila con un patrón simple
-        if regla == 0:
-            # Una sola celda en el medio
-            imagen[0, tamano//2] = 1
-        elif regla == 1:
-            # Tres celdas en el medio
-            imagen[0, tamano//2-1:tamano//2+2] = 1
-        else:
-            # Patrón alternante
-            imagen[0, ::2] = 1
-        
-        # Aplicar regla para generar filas subsecuentes
-        for i in range(1, tamano):
-            for j in range(1, tamano-1):
-                # Regla similar al autómata celular Regla 110 pero limitado
-                vecindario = (imagen[i-1, j-1], imagen[i-1, j], imagen[i-1, j+1])
-                
-                if regla == 0:
-                    # Regla que genera un patrón tipo Sierpinski
-                    imagen[i, j] = vecindario[0] ^ vecindario[2]
-                elif regla == 1:
-                    # Regla que genera un patrón limitado más complejo
-                    if vecindario == (1, 1, 1) or vecindario == (1, 0, 0) or vecindario == (0, 1, 0):
-                        imagen[i, j] = 1
-                else:
-                    # Regla que genera un patrón serpenteante
-                    if sum(vecindario) >= 2 or (vecindario[0] == 1 and vecindario[2] == 1):
-                        imagen[i, j] = 1
-        
-        return imagen
-EOF
+Las contribuciones son bienvenidas y apreciadas. Aquí hay algunas formas de contribuir:
 
-cat > src/models/cnn_moderna.py << 'EOF'
-import torch
-import torch.nn as nn
-import logging
+- 🐛 Reportar bugs y problemas
+- 💡 Proponer nuevas características o mejoras
+- 📚 Mejorar la documentación
+- 🧪 Agregar más pruebas
+- 🔍 Revisar pull requests
 
-logger = logging.getLogger(__name__)
+Para contribuir:
 
-class BloqueResidual(nn.Module):
-    """
-    Un bloque residual con conexión de atajo para mejor flujo de gradiente.
-    """
-    
-    def __init__(self, capas, reduccion_identidad=None):
-        """
-        Inicializa el bloque residual.
-        
-        Args:
-            capas (nn.Sequential): Capas convolucionales en el bloque
-            reduccion_identidad (nn.Module, optional): Reduce la conexión de identidad
-        """
-        super(BloqueResidual, self).__init__()
-        self.capas = capas
-        self.reduccion_identidad = reduccion_identidad
-        self.relu = nn.ReLU(inplace=True)
-    
-    def forward(self, x):
-        """Paso hacia adelante con conexión de atajo"""
-        identidad = x
-        
-        out = self.capas(x)
-        
-        # Aplicar reducción de identidad si es necesario
-        if self.reduccion_identidad is not None:
-            identidad = self.reduccion_identidad(x)
-        
-        out += identidad
-        out = self.relu(out)
-        
-        return out
+1. Haz fork del proyecto
+2. Crea una rama para tu contribución (`git checkout -b feature/nueva-funcionalidad`)
+3. Haz commit de tus cambios (`git commit -m 'Agrega nueva funcionalidad'`)
+4. Haz push a la rama (`git push origin feature/nueva-funcionalidad`)
+5. Abre un Pull Request
 
-class CNNModerna(nn.Module):
-    """
-    Una arquitectura CNN mejorada con componentes modernos como conexiones residuales
-    y normalización por lotes para mejor rendimiento y convergencia.
-    """
-    
-    def __init__(self, profundidad, num_clases=4, forma_entrada=(1, 64, 64)):
-        """
-        Inicializa el modelo CNN.
-        
-        Args:
-            profundidad (int): Parámetro de profundidad que controla la complejidad del modelo
-            num_clases (int): Número de clases a clasificar
-            forma_entrada (tuple): Forma de las imágenes de entrada (C, H, W)
-        """
-        super(CNNModerna, self).__init__()
-        self.profundidad = profundidad
-        self.forma_entrada = forma_entrada
-        
-        # Determinar arquitectura basada en la profundidad
-        num_bloques_conv = max(2, min(profundidad, 10))  # Al menos 2, máximo 10 bloques
-        
-        # Seguir las dimensiones actuales
-        canales_entrada = forma_entrada[0]
-        altura_actual, ancho_actual = forma_entrada[1], forma_entrada[2]
-        
-        # Crear capas convolucionales con conexiones residuales
-        self.bloques_conv = nn.ModuleList()
-        
-        # Características iniciales
-        canales_salida = 16
-        
-        # Convolución inicial
-        self.conv_inicial = nn.Sequential(
-            nn.Conv2d(canales_entrada, canales_salida, kernel_size=3, padding=1),
-            nn.BatchNorm2d(canales_salida),
-            nn.ReLU(inplace=True)
-        )
-        
-        # Bloques convolucionales
-        for i in range(num_bloques_conv):
-            # Crear bloque residual
-            bloque = self._hacer_bloque_residual(canales_salida, canales_salida * 2 if i < 3 else canales_salida)
-            self.bloques_conv.append(bloque)
-            
-            # Reducir dimensiones después de cada dos bloques o en el último bloque
-            if i % 2 == 1 or i == num_bloques_conv - 1:
-                self.bloques_conv.append(nn.Sequential(
-                    nn.Conv2d(canales_salida * 2 if i < 3 else canales_salida, 
-                             canales_salida * 2 if i < 3 else canales_salida, 
-                             kernel_size=3, stride=2, padding=1),
-                    nn.BatchNorm2d(canales_salida * 2 if i < 3 else canales_salida),
-                    nn.ReLU(inplace=True)
-                ))
-                altura_actual //= 2
-                ancho_actual //= 2
-            
-            # Actualizar canales para la siguiente capa
-            if i < 3:
-                canales_salida *= 2
-        
-        # Número final de canales
-        self.canales_finales = canales_salida
-        
-        # Calcular tamaño de características para capa completamente conectada
-        self.tamano_caracteristicas = self.canales_finales * altura_actual * ancho_actual
-        
-        # Capas completamente conectadas con dropout para regularización
-        self.capas_fc = nn.Sequential(
-            nn.Flatten(),
-            nn.Linear(self.tamano_caracteristicas, 256),
-            nn.ReLU(inplace=True),
-            nn.Dropout(0.5),
-            nn.Linear(256, 128),
-            nn.ReLU(inplace=True),
-            nn.Dropout(0.3),
-            nn.Linear(128, num_clases)
-        )
-        
-        # Inicializar pesos
-        self._inicializar_pesos()
-        
-        logger.info(f"CNN creada con {num_bloques_conv} bloques conv, forma de salida: {canales_salida}×{altura_actual}×{ancho_actual}")
-        logger.info(f"Tamaño de características: {self.tamano_caracteristicas}, parámetros: {self._contar_parametros():,}")
-    
-    def _hacer_bloque_residual(self, canales_entrada, canales_salida):
-        """
-        Crea un bloque residual con conexión de atajo.
-        """
-        # Si las dimensiones cambian, necesitamos un atajo de proyección
-        reduccion_identidad = None
-        if canales_entrada != canales_salida:
-            reduccion_identidad = nn.Sequential(
-                nn.Conv2d(canales_entrada, canales_salida, kernel_size=1),
-                nn.BatchNorm2d(canales_salida)
-            )
-        
-        capas = nn.Sequential(
-            # Primera convolución
-            nn.Conv2d(canales_entrada, canales_salida, kernel_size=3, padding=1),
-            nn.BatchNorm2d(canales_salida),
-            nn.ReLU(inplace=True),
-            # Segunda convolución
-            nn.Conv2d(canales_salida, canales_salida, kernel_size=3, padding=1),
-            nn.BatchNorm2d(canales_salida),
-            # No hay ReLU aquí - se aplica después de la conexión de atajo
-        )
-        
-        # Crear el bloque residual
-        return BloqueResidual(capas, reduccion_identidad)
-    
-    def _inicializar_pesos(self):
-        """Inicializar pesos usando inicialización He"""
-        for m in self.modules():
-            if isinstance(m, nn.Conv2d):
-                nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
-                if m.bias is not None:
-                    nn.init.constant_(m.bias, 0)
-            elif isinstance(m, nn.BatchNorm2d):
-                nn.init.constant_(m.weight, 1)
-                nn.init.constant_(m.bias, 0)
-            elif isinstance(m, nn.Linear):
-                nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
-                nn.init.constant_(m.bias, 0)
-    
-    def _contar_parametros(self):
-        """Contar el número de parámetros entrenables"""
-        return sum(p.numel() for p in self.parameters() if p.requires_grad)
-    
-    def forward(self, x):
-        """Paso hacia adelante a través de la red"""
-        x = self.conv_inicial(x)
-        
-        # Pasar a través de bloques convolucionales
-        for bloque in self.bloques_conv:
-            x = bloque(x)
-        
-        # Pasar a través de capas completamente conectadas
-        x = self.capas_fc(x)
-        
-        return x
-EOF
+## 📄 Licencia
 
-# Paso 10: Realizar primer commit
-git add .
-git commit -m "Configuración inicial del proyecto CNN-Turing-Complexity"
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
 
-# Paso 11: Configurar un repositorio remoto (opcional)
-# git remote add origin https://github.com/tu-usuario/CNN-Turing-Complexity.git
-# git push -u origin master
+## 📧 Contacto
 
-echo "¡Repositorio Git configurado exitosamente!"
-echo "Estructura del proyecto:"
-find . -type f | grep -v "__pycache__" | sort
+Nicolás Rodríguez Díaz - [nrodrigued@eafit.edu.co](mailto:nrodrigued@eafit.edu.co)
 
-echo "Para completar la configuración del repositorio remoto, ejecuta:"
-echo "git remote add origin https://github.com/tu-usuario/CNN-Turing-Complexity.git"
-echo "git push -u origin master"
+Universidad EAFIT, Medellín, Colombia
+
+---
+
+<div align="center">
+<p>
+<a href="https://github.com/tu-usuario/CNN-Turing-Complexity/stargazers">⭐ Dame una estrella si te resulta útil! ⭐</a>
+</p>
+
+<p>
+<b>Una investigación en la intersección del Aprendizaje Profundo y la Teoría de la Computación</b>
+</p>
+</div>
